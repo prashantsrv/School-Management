@@ -27,15 +27,14 @@ export async function POST(req) {
     const buffer = Buffer.from(bytes);
 
     const imageName = Date.now() + "-" + image.name;
-    // const imgPath = path.join(uploadDir, imageName);
-    // fs.writeFileSync(imgPath, buffer);
+
 
     const uploadDir = path.join(process.cwd(), "public/schoolImages");
 
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
-    const filePath = path.join(uploadDir, imageName); // this MUST be string
+    const filePath = path.join(uploadDir, imageName);
 
     fs.writeFileSync(filePath, buffer);
 
